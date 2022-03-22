@@ -1,7 +1,21 @@
 const express = require("express");
 const res = require("express/lib/response");
 const app = express();
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const connection = require("./database/database.js");
+const perguntaModel = require("./database/Pergunta");
+
+
+
+
+//database
+connection
+    .authenticate()
+    .then(() => {
+        console.log('conexão com o banco de dados realizada com sucesso!')
+    }).catch((error) => {
+        console.log(error);
+    });
 
 //estou dizendo para o express usar o EJS como View Engine
 app.set('view engine', 'ejs');
