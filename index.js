@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database.js");
-const perguntaModel = require("./database/Pergunta");
+const Pergunta = require("./database/Pergunta");
 
 
 
@@ -34,9 +34,16 @@ app.get("/perguntar", (req, res)=>{
 })
 
 app.post("/salvarpergunta", (req, res)=>{  
-    let titulo = req.body.titulo
-    let descricao = req.body.descricao
-    res.send("formulário recebido! título " + titulo + " " + "descrição" + descricao)         
+    var titulo = req.body.titulo
+    var descricao = req.body.descricao
+
+    Pergunta.create({
+         titulo: titulo,
+         descricao: descricao,
+    }).then(() =>{
+        res.redirect("/")
+    });
+
 })
 
 app.listen(8080, ()=>{console.log("Back end started at http://localhost:8080!")

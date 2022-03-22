@@ -1,15 +1,17 @@
 const Sequelize = require("sequelize");
 const connection = require("./database");
 
-const Pergunta = connection.define('pergunta',{
+const Pergunta = connection.define('guiaPergunta',{
     titulo:{
         type: Sequelize.STRING,
         allowNull: false
     },
-    descriçao:{
+    descricao:{
         type: Sequelize.TEXT,
         allowNull: false
     }
 });
 
 Pergunta.sync({force: false}).then(()=>{});
+
+module.exports = Pergunta;
