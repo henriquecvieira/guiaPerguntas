@@ -3,7 +3,7 @@ const res = require("express/lib/response");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database.js");
-const Pergunta = require("./database/Pergunta");
+const Pergunta = require("./database/Pergunta"); //Pergunta é a variavel represantante da tabela no código
 
 
 
@@ -52,5 +52,17 @@ app.post("/salvarpergunta", (req, res)=>{
 
 })
 
-app.listen(8080, ()=>{console.log("Back end started at http://localhost:8080!")
+app.get("/pergunta/:id",(req, res) => {
+    var id = req.params.id;
+    Pergunta.findOne({
+        Where: {id: id}
+}).then(pergunta =>{
+    if(pergunta != undefined){ //pergunta localizada
+        res.render("pergunta");
+    }else{// não encontrada
+        res.redirect("/");
+    }
 })
+});
+
+app.listen(8080, ()=>{console.log("Back end started at http://localhost:8080!");})
