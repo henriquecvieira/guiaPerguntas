@@ -58,8 +58,10 @@ app.get("/pergunta/:id",(req, res) => {
         Where: {id: id}
 }).then(pergunta =>{
     if(pergunta != undefined){ //pergunta localizada
-        res.render("pergunta");
-    }else{// não encontrada
+        res.render("pergunta",{
+            pergunta: pergunta
+        });
+    }else{// caso a pergunta não seja encontrada
         res.redirect("/");
     }
 })
