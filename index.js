@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database.js");
 const Pergunta = require("./database/Pergunta"); //Pergunta é a variavel represantante da tabela no código
+const Resposta = require("./database/Resposta");
 
 
 
