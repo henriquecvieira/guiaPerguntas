@@ -1,15 +1,18 @@
 body{
-    background-color: #61696e
+    background-color: #d5dbdf
 }
 
 #formulario-pergunta{
     margin-top: 5vh;
 }
 h1{
-    color: rgb(5, 5, 5)
+    color: rgb(56, 51, 48)
 }
 
 #imagem {
     margin: 10px 10px 5px 70px;
     width:30px;
+}
+p{
+    color: #5f530b
 }
